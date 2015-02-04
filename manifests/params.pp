@@ -29,6 +29,11 @@ class squid3::params {
       $coredump_dir  = '/var/spool/squid'
     }
   }
+  if (${operatingsystem} == 'Ubuntu') and (${operatingsystemrelease} > '14.04') {
+    Service{$service_name:
+      provider => 'upstart',
+    }
+  }
 
   $access_log      = [ "${log_directory}/access.log squid" ]
   $cache_log       = "${log_directory}/cache.log"

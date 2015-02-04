@@ -65,6 +65,7 @@ class squid3 (
     ensure    => running,
     restart   => "service ${service_name} reload",
     path      => ['/sbin', '/usr/sbin'],
+    provider  => $squid3_service_provider
     hasstatus => true,
     require   => Package['squid3_package'],
   }
